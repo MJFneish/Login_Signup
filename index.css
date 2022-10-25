@@ -1,0 +1,288 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --clr1: #00dfc4;
+    --clr2: #f4035f;
+    --clr3: #5ff403;
+    --clr4: rgba(255,255,255,0.25);
+    --bg-clr: #1b2b3a;
+    --trs-5: 0.5s;
+}
+body{
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-clr);
+}
+.login_signup_box{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 400px;
+    height: 550px;
+    color: white;
+    overflow: hidden;
+    padding: 0 10px;
+    border: 1px solid var(--clr1);
+    border-radius: 5px;
+}
+.swapbox{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+    width: 100%;
+}
+.swapbox h2{
+    width: 50%;
+    text-align: center;
+    letter-spacing: 2.5px;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 20px 0;
+}
+.swapbox #SWAP{
+    content: '';
+    position: absolute;
+    height: 5px;
+    width: 50%;
+    left: 0%;
+    top: calc(1.5em + 40px - 2.5px);
+    background-color: var(--clr1);
+    transition: var(--trs-5);
+
+}
+#SWAP.toright{
+    left:50%;
+}
+
+.login_signup{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: calc(550px - (1.5em + 40px));
+    margin: 70px 0;
+}
+.login,
+.signup{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    transition: var(--trs-5);
+
+}
+.login.active,
+.signup.active{
+    left: 0;
+    top: 0;
+    opacity: 1;
+}
+.login.active ~ .signup{
+    /* left: -120%; */
+    opacity: 0;
+    top: 20%;
+    pointer-events: none;
+}
+.input_box{
+    position: relative;
+    width: 80%;
+    margin-left: 20px;
+}
+.input_box input{
+    width: 100%;   
+    padding: 20px;
+    border: 1px solid var(--clr4);
+    background-color: var(--bg-clr);
+    border-radius: 5px;
+    outline: none;
+    color: #fff;
+    font-size: 1em;
+    letter-spacing: 1.2px;
+    font-weight: 500;
+    transition: var(--trs-5);
+}
+.input_box input ~ span{
+    position: absolute; 
+    padding: 20px;
+    left: 0;
+    pointer-events: none;
+    font-size: 1em;
+    color: var(--clr4);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: var(--trs-5);
+}
+.input_box input:valid,
+.input_box input:focus{
+    border: 1px solid var(--clr1);
+
+}
+.input_box input:valid ~ span,
+.input_box input:focus ~ span{
+    
+    background-color: var(--bg-clr);
+    color: var(--clr1);
+    border-left: 1px solid var(--clr1);
+    border-right: 1px solid var(--clr1);
+    transform: translateY(-10px) translateX(10px);
+    padding: 5px;
+    font-size: 0.6em;
+    font-weight: 600;
+}
+.input_box:nth-child(even) input:valid ~ span,
+.input_box:nth-child(even) input:focus ~ span{
+    background-color: var(--clr1);
+    border: none;
+    color: var(--bg-clr);
+}
+
+.passwordInput .togglebtn
+{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    width: 30px;
+    height: 30px;
+    top: 15px;
+    right: 10px;
+    border-radius: 50%;
+    /* background-color: rgba(0, 0, 0, 0.15); */
+}
+
+.passwordInput .togglebtn::before
+{
+    content: '\f06e';
+    font-family: fontAwesome;
+}
+.passwordInput .togglebtn.hide::before
+{
+    content: '\f070';
+    font-family: fontAwesome;
+}
+
+
+
+.link{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.link a{
+    position: relative;
+}
+
+.link a:nth-child(1){
+    position: relative;
+    color: white;
+    background-color: white;
+    padding: 10px;
+    letter-spacing: 0.1em;
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+.link a:nth-child(1):hover{
+    background-color: var(--clr);
+    letter-spacing: 0.2em;
+    box-shadow: 0 0 35px var(--clr);
+}
+
+.link a:nth-child(1):before{
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background-color: var(--bg-clr);
+}
+
+
+.link a:nth-child(1) span{
+    position: relative;
+    z-index: 1;
+}
+
+.link a:nth-child(1):hover span{
+    color: var(--clr);
+}
+
+.link a:nth-child(1) i{
+    position: absolute;
+    inset: 0;
+}
+
+
+.link a:nth-child(1) i::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 80%;
+    width: 10px;
+    height: 4px;
+    background-color: #222327;
+    transform: translateX(-50%) skewX(325deg);
+    transition: 0.5s;
+}
+.link a:nth-child(1) i::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    width: 10px;
+    height: 4px;
+    background-color: #222327;
+    transform: translateX(-50%) skewX(325deg);
+    transition: 0.5s;
+}
+.link a:nth-child(1):hover i::before{
+    left: 20%;
+    width: 20px;
+}
+.link a:nth-child(1):hover i::after{
+    left: 80%;
+    width: 20px;
+}
+
+.link a:nth-child(2):link,
+.link a:nth-child(2):visited,
+.link a:nth-child(2):active{
+    
+    color:var(--clr1);
+    opacity: 0.7;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: var(--trs-5);
+}
+.link a:nth-child(2):hover{
+    opacity: 1;
+    letter-spacing: 1.1px;
+}
+.link a:nth-child(2) i{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    opacity: 0.7;
+    background-color: var(--clr1);
+    transition: var(--trs-5);
+}
+
+.link a:nth-child(2):hover i{
+    left:0;
+    width: 60%;
+    opacity: 1;
+}
